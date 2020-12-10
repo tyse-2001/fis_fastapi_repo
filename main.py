@@ -48,7 +48,7 @@ def scan():
 
 def insert_into_files(session, values):
     ''' Insert file values into the files table
-    
+
     Insert the values into the respective tables and
     commit the changes.
 
@@ -85,7 +85,7 @@ def insert_into_files(session, values):
                 session.commit()
 def insert_into_domain_ip(session, values):
     ''' Insert domain/ip values into the domain_ip table
-    
+
     Insert the values into the respective tables and
     commit the changes.
 

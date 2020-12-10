@@ -6,7 +6,7 @@ from sqlalchemy.orm import relationship
 from database import Base
 
 class Files(Base):
-    '''Files model'''
+    '''files model'''
     __tablename__ = "files"
 
     file_id = Column(String, primary_key = True)
@@ -16,10 +16,7 @@ class Files(Base):
     severity = Column(String)
     exec_parent_count = Column(Integer)
 
-    exec_parent = relationship(
-        "Execution_Parents"
-        #back_populates = "executed_file"
-    )
+    exec_parent = relationship("Execution_Parents")
 
 class Execution_Parents(Base):
     '''execution_parents model'''
@@ -31,11 +28,6 @@ class Execution_Parents(Base):
     detection_score = Column(String)
     severity = Column(String)
     parent_type = Column(String)
-
-    #executed_file = relationship(
-    #    "Files",
-    #    back_populates = "exec_parent"
-    #)
 
 class Domain_Ip(Base):
     '''domain_ip model'''
