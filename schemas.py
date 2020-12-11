@@ -1,7 +1,6 @@
+'''Pydantic models (schemas) that will be used when reading data, when returning it from the API. '''
 from typing import List
-
 from pydantic import BaseModel
-
 
 class ExecutionParentsBase(BaseModel):
     parent_id: str

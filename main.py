@@ -25,7 +25,7 @@ app = FastAPI()
 
 # Dependency
 def get_db():
-    '''Get the database session'''
+    '''Get the database session from database.py '''
     db_session = SessionLocal()
     try:
         yield db_session

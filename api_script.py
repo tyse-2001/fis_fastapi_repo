@@ -742,8 +742,5 @@ def connect(api_object):
 
 if __name__ == '__main__':
     #connect("ca27950b280b290f61c7bd113cf873384e662c047a20b8fbce1f73cda2a70c92")
-    #connect("wordcounter.net")
     #connect("google.com")
-    #domain_ip_values("google.com")
-    #print(files_values("ca27950b280b290f61c7bd113cf873384e662c047a20b8fbce1f73cda2a70c92"))
     pass

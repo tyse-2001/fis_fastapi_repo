@@ -1,3 +1,4 @@
+''' Database CRUD request functions '''
 from sqlalchemy.orm import Session
 
 import models
