@@ -42,13 +42,13 @@ def severity_calc(score):
 ########## DOMAINS/IP TABLES ##########
 async def fetch_related_file_values(object_id, work_queue):
     list_values = []
-    ref_file_name = ""
+    file_name = ""
     date_scanned = ""
     while not work_queue.empty():
         dicts = await work_queue.get()
         attributes = dicts["attributes"]
         if "meaningful_name" in attributes:
-            ref_file_name = attributes["meaningful_name"]
+            file_name = attributes["meaningful_name"]
         if "last_analysis_date" in attributes:
             date_scanned = datetime.utcfromtimestamp(
                 attributes["last_analysis_date"]
@@ -61,23 +61,23 @@ async def fetch_related_file_values(object_id, work_queue):
                 "Last scan date not found for referrer file entry. "
                 "Will be set to earliest value."
             )
-        ref_detections = (
+        file_detections = (
             attributes["last_analysis_stats"]["malicious"]
             + attributes["last_analysis_stats"]["suspicious"]
         )
-        ref_total = sum(attributes["last_analysis_stats"].values())
-        detection_score = str(ref_detections) + "/" + str(ref_total)
+        total = sum(attributes["last_analysis_stats"].values())
+        detection_score = str(file_detections) + "/" + str(total)
 
-        referrer_entries = (
+        related_file_entries = (
             attributes["sha256"], # ref_file_id/comm_file_id
-            ref_file_name, #ref_file_name/comm_file_name
+            file_name, #ref_file_name/comm_file_name
             object_id, # related_object_id
             date_scanned,
             detection_score,
             severity_calc(detection_score), # severity
             attributes["type_description"] # ref_file_type/comm_file_type
         )
-        list_values.append(referrer_entries)
+        list_values.append(related_file_entries)
     return list_values
 
 ### REFERRER_FILES FIELDS ###
