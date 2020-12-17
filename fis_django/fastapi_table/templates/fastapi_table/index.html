@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table, th, td {
+            border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Domain/Ip page</h1>
+        <table>
+            <caption>Files table values</caption>
+            <tr>
+                {% for key in json.keys %}
+                    <th>{{key}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for value in json.values %}
+                    <th>{{value}}</th>
+                {% endfor %}
+            </tr>
+        </table>
+        <table>
+            <caption>Referrer_Files table values</caption>
+            <tr>
+                <th>ref_file_id</th>
+                <th>ref_file_name</th>
+                <th>related_object_id</th>
+                <th>date_scanned</th>
+                <th>detection_score</th>
+                <th>severity</th>
+                <th>ref_file_type</th>
+            </tr>
+            {% for dicts in ref_files %}
+                <tr>
+                    {% for key, value in dicts.items %}
+                        <th>{{value}}</th>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <table>
+            <caption>Communicating_Files table values</caption>
+            <tr>
+                <th>comm_file_id</th>
+                <th>comm_file_name</th>
+                <th>related_object_id</th>
+                <th>date_scanned</th>
+                <th>detection_score</th>
+                <th>severity</th>
+                <th>comm_file_type</th>
+            </tr>
+            {% for dicts in comm_files %}
+                <tr>
+                    {% for key, value in dicts.items %}
+                        <th>{{value}}</th>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
