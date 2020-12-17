@@ -57,32 +57,33 @@ def insert_into_files(session, values):
         values: The tuple containing the values to be inserted into the
           tables files, and execution_parents respectively
     '''
-    for entry in values:
-        if isinstance(entry, tuple):
-            session.add(
-                models.Files(
-                    file_id = entry[0],
-                    file_name = entry[1],
-                    file_date_scanned = entry[2],
-                    score = entry[3],
-                    severity = entry[4],
-                    exec_parent_count = entry[5]
-                )
-            )
-            session.commit()
-        elif isinstance(entry, list):
-            for tuples in entry:
+    if values[0]:
+        for entry in values:
+            if isinstance(entry, tuple):
                 session.add(
-                    models.Execution_Parents(
-                        parent_id = tuples[0],
-                        related_file_id = tuples[1],
-                        exec_date_scanned = tuples[2],
-                        detection_score = tuples[3],
-                        severity = tuples[4],
-                        parent_type = tuples[5]
+                    models.Files(
+                        file_id = entry[0],
+                        file_name = entry[1],
+                        file_date_scanned = entry[2],
+                        score = entry[3],
+                        severity = entry[4],
+                        exec_parent_count = entry[5]
                     )
                 )
                 session.commit()
+            elif isinstance(entry, list):
+                for tuples in entry:
+                    session.add(
+                        models.Execution_Parents(
+                            parent_id = tuples[0],
+                            related_file_id = tuples[1],
+                            exec_date_scanned = tuples[2],
+                            detection_score = tuples[3],
+                            severity = tuples[4],
+                            parent_type = tuples[5]
+                        )
+                    )
+                    session.commit()
 def insert_into_domain_ip(session, values):
     ''' Insert domain/ip values into the domain_ip table
 
@@ -95,50 +96,50 @@ def insert_into_domain_ip(session, values):
           tables domain_ip, referrer_files, and communicating_files
           respectively
     '''
-    # Files values
-    session.add(
-        models.Domain_Ip(
-            object_id = values[0][0],
-            object_type = values[0][1],
-            object_last_updated = values[0][2],
-            score = values[0][3],
-            severity = values[0][4],
-            comm_count = values[0][5],
-            ref_count = values[0][6]
-        )
-    )
-    session.commit()
-
-    # Referrer_files values
-    for dicts in values[1]:
+    if values[0]:
+        # Files values
         session.add(
-            models.Referrer_Files(
-                ref_file_id = dicts[0],
-                ref_file_name = dicts[1],
-                related_object_id = dicts[2],
-                date_scanned = dicts[3],
-                detection_score = dicts[4],
-                severity = dicts[5],
-                ref_file_type = dicts[6]
+            models.Domain_Ip(
+                object_id = values[0][0],
+                object_type = values[0][1],
+                object_last_updated = values[0][2],
+                score = values[0][3],
+                severity = values[0][4],
+                comm_count = values[0][5],
+                ref_count = values[0][6]
             )
         )
         session.commit()
 
-    # Referrer_files values
-    for dicts in values[2]:
-        session.add(
-            models.Communicating_Files(
-                comm_file_id = dicts[0],
-                comm_file_name = dicts[1],
-                related_object_id = dicts[2],
-                date_scanned = dicts[3],
-                detection_score = dicts[4],
-                severity = dicts[5],
-                comm_file_type = dicts[6]
+        # Referrer_files values
+        for dicts in values[1]:
+            session.add(
+                models.Referrer_Files(
+                    ref_file_id = dicts[0],
+                    ref_file_name = dicts[1],
+                    related_object_id = dicts[2],
+                    date_scanned = dicts[3],
+                    detection_score = dicts[4],
+                    severity = dicts[5],
+                    ref_file_type = dicts[6]
+                )
             )
-        )
-        session.commit()
+            session.commit()
 
+        # Referrer_files values
+        for dicts in values[2]:
+            session.add(
+                models.Communicating_Files(
+                    comm_file_id = dicts[0],
+                    comm_file_name = dicts[1],
+                    related_object_id = dicts[2],
+                    date_scanned = dicts[3],
+                    detection_score = dicts[4],
+                    severity = dicts[5],
+                    comm_file_type = dicts[6]
+                )
+            )
+            session.commit()
 
 @app.get("/scan/domain_ip/{object_id}", response_model = schemas.DomainIp)
 def check_database_domain_ip(object_id: str, db_session: Session = Depends(get_db)):

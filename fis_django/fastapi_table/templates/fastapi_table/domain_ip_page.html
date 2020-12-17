@@ -5,60 +5,90 @@
             table, th, td {
             border: 1px solid black;
             }
+            .table_container {
+                border: 1px solid black;
+                width: 1500px;
+                height: 500px;
+                overflow: auto;
+            }
+            th {
+                font-size: 15px;
+            }
         </style>
     </head>
     <body>
-        <h1>Domain/Ip page</h1>
-        <table>
-            <caption>domain_ip table values</caption>
-            <tr>
-                {% for key in json.keys %}
-                    <th>{{key}}</th>
-                {% endfor %}
-            </tr>
-            <tr>
-                {% for value in json.values %}
-                    <th>{{value}}</th>
-                {% endfor %}
-            </tr>
-        </table>
-        <table>
-            <caption>referrer_files table values</caption>
-            <tr>
-                <th>ref_file_id</th>
-                <th>ref_file_name</th>
-                <th>related_object_id</th>
-                <th>date_scanned</th>
-                <th>detection_score</th>
-                <th>severity</th>
-                <th>ref_file_type</th>
-            </tr>
-            {% for dicts in ref_files %}
+        <h2>Domain/Ip page</h2>
+
+        <a href="/fastapi_table/files/">Search for files</a>
+        <br>
+        <form action="/fastapi_table/domain_ip_get/" method="get">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+        <br>
+        {% if json %}
+            <table>
+                <caption>domain_ip table values</caption>
                 <tr>
-                    {% for key, value in dicts.items %}
+                    {% for key in json.keys %}
+                        <th>{{key}}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    {% for value in json.values %}
                         <th>{{value}}</th>
                     {% endfor %}
                 </tr>
-            {% endfor %}
-        </table>
-        <table>
-            <caption>communicating_files table values</caption>
-            <tr>
-                <th>comm_file_id</th>
-                <th>comm_file_name</th>
-                <th>related_object_id</th>
-                <th>date_scanned</th>
-                <th>detection_score</th>
-                <th>severity</th>
-                <th>comm_file_type</th>
-            </tr>
-            {% for dicts in comm_files %}
-                <tr>
-                    {% for key, value in dicts.items %}
-                        <th>{{value}}</th>
+            </table>
+            <br>
+            <br>
+            <div class="table_container">
+                <table>
+                    <caption>referrer_files table values</caption>
+                    <tr>
+                        <th>ref_file_id</th>
+                        <th>ref_file_name</th>
+                        <th>related_object_id</th>
+                        <th>date_scanned</th>
+                        <th>detection_score</th>
+                        <th>severity</th>
+                        <th>ref_file_type</th>
+                    </tr>
+                    {% for dicts in ref_files %}
+                        <tr>
+                            {% for key, value in dicts.items %}
+                                <th>{{value}}</th>
+                            {% endfor %}
+                        </tr>
                     {% endfor %}
-                </tr>
-            {% endfor %}
-        </table>
+                </table>
+            </div>
+            <br>
+            <br>
+            <div class="table_container">
+                <table>
+                    <caption>communicating_files table values</caption>
+                    <tr>
+                        <th>comm_file_id</th>
+                        <th>comm_file_name</th>
+                        <th>related_object_id</th>
+                        <th>date_scanned</th>
+                        <th>detection_score</th>
+                        <th>severity</th>
+                        <th>comm_file_type</th>
+                    </tr>
+                    {% for dicts in comm_files %}
+                        <tr>
+                            {% for key, value in dicts.items %}
+                                <th>{{value}}</th>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% else %}
+            <p>value not found</p>
+        {% endif %}
     </body>
 </html>
