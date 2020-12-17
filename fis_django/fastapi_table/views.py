@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from .form import DomainIpForm
+from .form import DomainIpForm, FilesForm
 
 import json
 
@@ -12,6 +12,7 @@ import requests
 def index(request):
     return HttpResponse("url")
 
+# Domain_Ip functions
 def domain_ip_search(request):
     return render(request, 'fastapi_table/domain_ip_search.html')
 
@@ -43,5 +44,36 @@ def search_domain_ip(request, object_id):
         'comm_files': comm_files
     }
 
-    return render(request, 'fastapi_table/index.html', context)
+    return render(request, 'fastapi_table/domain_ip_page.html', context)
+
+# Files functions
+def files_search(request):
+    return render(request, 'fastapi_table/files_search.html')
+
+def files_redirect(request):
+    if request.method == 'GET':
+        form = FilesForm(request.GET)
+        if form.is_valid():
+            return HttpResponseRedirect(
+                '/fastapi_table/files/' + str(form.cleaned_data['file_name'])
+            )
+    else:
+        form = FilesForm()
+
+    return render(request, 'fastapi_table/name.html', {'form': form})
+
+def search_files(request, file_id):
+    url = "http://127.0.0.1:8000/scan/files/" + file_id
+    file_dict = json.loads(requests.get(url).text)
+
+    exec_parent = file_dict["exec_parent"]
+    print(file_dict)
     
+    file_dict.pop("exec_parent")
+
+    context = {
+        'json': file_dict,
+        'exec_parent': exec_parent
+    }
+
+    return render(request, 'fastapi_table/files_page.html', context)

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table, th, td {
+            border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Files page</h1>
+        <table>
+            <caption>files table values</caption>
+            <tr>
+                {% for key in json.keys %}
+                    <th>{{key}}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for value in json.values %}
+                    <th>{{value}}</th>
+                {% endfor %}
+            </tr>
+        </table>
+        <table>
+            <caption>execution_parents table values</caption>
+            <tr>
+                <th>parent_id</th>
+                <th>related_file_id</th>
+                <th>exec_date_scanned</th>
+                <th>detection_score</th>
+                <th>severity</th>
+                <th>parent_type</th>
+            </tr>
+            {% for dicts in exec_parent %}
+                <tr>
+                    {% for key, value in dicts.items %}
+                        <th>{{value}}</th>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
