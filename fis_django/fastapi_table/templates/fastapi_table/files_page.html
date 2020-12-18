@@ -7,11 +7,14 @@
             }
             .table_container {
                 border: 1px solid black;
-                width: 1500px;
-                height: 500px;
-                overflow: auto;
+                height: auto;
+                max-height: 500px;
+                overflow-x: auto;
             }
-            th {
+            table {
+                width: 100%
+            }
+            th, td {
                 font-size: 15px;
             }
         </style>
@@ -28,8 +31,8 @@
         </form>
         <br>
         {% if json %}
+            <h3>files table values</h3>
             <table>
-                <caption>files table values</caption>
                 <tr>
                     {% for key in json.keys %}
                         <th>{{key}}</th>
@@ -37,15 +40,15 @@
                 </tr>
                 <tr>
                     {% for value in json.values %}
-                        <th>{{value}}</th>
+                        <td>{{value}}</td>
                     {% endfor %}
                 </tr>
             </table>
             <br>
             <br>
+            <h3>execution_parents table values</h3>
             <div class="table_container">
                 <table>
-                    <caption>execution_parents table values</caption>
                     <tr>
                         <th>parent_id</th>
                         <th>related_file_id</th>
@@ -57,7 +60,7 @@
                     {% for dicts in exec_parent %}
                         <tr>
                             {% for key, value in dicts.items %}
-                                <th>{{value}}</th>
+                                <td>{{value}}</td>
                             {% endfor %}
                         </tr>
                     {% endfor %}
