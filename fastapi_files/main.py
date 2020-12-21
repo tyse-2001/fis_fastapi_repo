@@ -177,7 +177,9 @@ def check_database_domain_ip(object_id: str, db_session: Session = Depends(get_d
             domain_ip_result = crud.get_domain_ip(db_session, object_id = object_id)
 
             if domain_ip_result is None:
-                raise HTTPException(status_code=404, detail="Domain/Ip not found")
+                raise HTTPException(status_code=404, detail="Domain/Ip not found in VirusTotal API.")
+    else:
+        raise HTTPException(status_code=404, detail="Domain/Ip not found. Invalid domain name.")
 
     return domain_ip_result
 
@@ -207,6 +209,8 @@ def check_database_files(file_id: str, db_session: Session = Depends(get_db)):
             files_result = crud.get_files(db_session, file_id = file_id)
 
             if files_result is None:
-                raise HTTPException(status_code=404, detail="File not found")
+                raise HTTPException(status_code=404, detail="File not found in VirusTotal API.")
+    else:
+        raise HTTPException(status_code=404, detail="File not found. Invalid file hash provided.")
 
     return files_result
