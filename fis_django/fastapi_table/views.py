@@ -1,11 +1,11 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
-from .form import DomainIpForm, FilesForm
-
 import json
 
 import requests
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.template import loader
+
+from .form import DomainIpForm, FilesForm
 
 # Create your views here.
 
