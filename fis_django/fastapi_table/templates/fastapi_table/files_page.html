@@ -5,10 +5,8 @@
         <link rel="stylesheet" type="text/css" href="{% static 'fastapi_table/style.css' %}">
     </head>
     <body>
+        {% include "fastapi_table/page_header.html" %}
         <h2>Files page</h2>
-
-        <a href="/fastapi_table/domain_ip/">Search for Domain/Ip</a><br>
-        <a href="/fastapi_table/">Go back to VirusTotal listings</a>
         <br>
         <form action="/fastapi_table/files_get/" method="get">
             {% csrf_token %}

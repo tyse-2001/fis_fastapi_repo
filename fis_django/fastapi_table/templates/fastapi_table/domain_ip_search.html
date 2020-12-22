@@ -5,12 +5,12 @@
         <link rel="stylesheet" type="text/css" href="{% static 'fastapi_table/style.css' %}">
     </head>
     <body>
+        {% include "fastapi_table/page_header.html" %}
         <h2>Search for domain/ip entries</h2>
         <form action="/fastapi_table/domain_ip_get/" method="get">
             {% csrf_token %}
             {{ form }}
             <input type="submit" value="Submit">
         </form>
-        <a href="/fastapi_table/files/">Search for files</a>
     </body>
 </html>
