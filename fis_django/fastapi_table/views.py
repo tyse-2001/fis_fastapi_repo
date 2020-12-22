@@ -14,7 +14,10 @@ def index(request):
 
 # Domain_Ip functions
 def domain_ip_search(request):
-    return render(request, 'fastapi_table/domain_ip_search.html')
+    context = {
+        'form': DomainIpForm()
+    }
+    return render(request, 'fastapi_table/domain_ip_search.html', context)
 
 def domain_ip_redirect(request):
     if request.method == 'GET':
@@ -54,7 +57,10 @@ def search_domain_ip(request, object_id):
 
 # Files functions
 def files_search(request):
-    return render(request, 'fastapi_table/files_search.html')
+    context = {
+        'form': FilesForm()
+    }
+    return render(request, 'fastapi_table/files_search.html', context)
 
 def files_redirect(request):
     if request.method == 'GET':

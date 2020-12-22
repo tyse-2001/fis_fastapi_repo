@@ -1,23 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <style>
-            table, th, td {
-            border: 1px solid black;
-            }
-            .table_container {
-                border: 1px solid black;
-                height: auto;
-                max-height: 500px;
-                overflow-x: auto;
-            }
-            table {
-                width: 100%
-            }
-            th, td {
-                font-size: 15px;
-            }
-        </style>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'fastapi_table/style.css' %}">
     </head>
     <body>
         <h2>Files page</h2>

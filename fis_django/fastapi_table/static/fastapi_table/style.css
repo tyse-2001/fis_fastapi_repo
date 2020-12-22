@@ -1,0 +1,18 @@
+h2 {
+    color: green;
+}
+table, th, td {
+    border: 1px solid black;
+    }
+div.table_container {
+    border: 1px solid black;
+    height: auto;
+    max-height: 500px;
+    overflow-x: auto;
+}
+table {
+    width: 100%
+}
+th, td {
+    font-size: 15px;
+}

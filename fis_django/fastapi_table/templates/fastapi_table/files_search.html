@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<body>
-    <a href="/fastapi_table/domain_ip/">Search for Domain/Ip</a>
-    <form action="/fastapi_table/files_get/" method="get">
-        <label for="file_name">File name: </label>
-        <input id="file_name" type="text" name="file_name" value="{{ current_name }}">
-        <input type="submit" value="Submit">
-    </form>
-</body>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'fastapi_table/style.css' %}">
+    </head>
+    <body>
+        <h2>Search for file entries</h2>
+        <form action="/fastapi_table/files_get/" method="get">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+        <a href="/fastapi_table/domain_ip/">Search for Domain/Ip</a>
+    </body>
+</html>
