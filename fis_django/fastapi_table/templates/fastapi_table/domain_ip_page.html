@@ -6,76 +6,90 @@
     </head>
     <body>
         {% include "fastapi_table/page_header.html" %}
-        <h2>Domain/Ip page</h2>
-        <br>
-        <form action="/fastapi_table/domain_ip_get/" method="get">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Submit">
-        </form>
-        <br>
-        {% if json %}
-            <h3>domain_ip table values</h3>
-            <table>
-                <tr>
-                    {% for key in json.keys %}
-                        <th>{{key}}</th>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for value in json.values %}
-                        <td>{{value}}</td>
-                    {% endfor %}
-                </tr>
-            </table>
+        <div class="main-body">
+            <h2>Domain/Ip page</h2>
             <br>
+            <form action="/fastapi_table/domain_ip_get/" method="get">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">
+            </form>
             <br>
-            <h3>referrer_files table values</h3>
-            <div class="table_container">
+            {% if json %}
+                <h3>domain_ip table values</h3>
                 <table>
                     <tr>
-                        <th>ref_file_id</th>
-                        <th>ref_file_name</th>
-                        <th>related_object_id</th>
-                        <th>date_scanned</th>
-                        <th>detection_score</th>
-                        <th>severity</th>
-                        <th>ref_file_type</th>
+                        {% for key in json.keys %}
+                            <th>{{key}}</th>
+                        {% endfor %}
                     </tr>
-                    {% for dicts in ref_files %}
-                        <tr>
-                            {% for key, value in dicts.items %}
-                                <td>{{value}}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-            <br>
-            <br>
-            <h3>communicating_files table values</h3>
-            <div class="table_container">
-                <table>
-                    <tr>
-                        <th>comm_file_id</th>
-                        <th>comm_file_name</th>
-                        <th>related_object_id</th>
-                        <th>date_scanned</th>
-                        <th>detection_score</th>
-                        <th>severity</th>
-                        <th>comm_file_type</th>
+                    <tr class="{% for x, y in json.items %}{% if x == 'severity' and y == 'low' %}severity-low{% endif %} {% if x == 'severity' and y == 'medium' %}severity-medium{% endif %}{% if x == 'severity' and y == 'high' %}severity-high{% endif %}{% endfor %}">
+                        {% for value in json.values %}
+                            <td>{{value}}</td>
+                        {% endfor %}
                     </tr>
-                    {% for dicts in comm_files %}
-                        <tr>
-                            {% for key, value in dicts.items %}
-                                <td>{{value}}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
                 </table>
-            </div>
-        {% else %}
-            <p>value not found</p>
-        {% endif %}
+                <br>
+                <br>
+                <h3>referrer_files table values</h3>
+                <div class="table_container">
+                    <table>
+                        <tr>
+                            <th>ref_file_id</th>
+                            <th>ref_file_name</th>
+                            <th>related_object_id</th>
+                            <th>date_scanned</th>
+                            <th>detection_score</th>
+                            <th>severity</th>
+                            <th>ref_file_type</th>
+                        </tr>
+                        {% for dicts in ref_files %}
+                            <tr class="{% for x, y in dicts.items %}{% if x == 'severity' and y == 'low' %}severity-low{% endif %}{% if x == 'severity' and y == 'medium' %}severity-medium{% endif %}{% if x == 'severity' and y == 'high' %}severity-high{% endif %}{% endfor %}">
+                                {% for key, value in dicts.items %}
+                                    <td>
+                                        {% if key == "ref_file_id" %}
+                                            <a href="/fastapi_table/files/{{value}}">{{value}}</a>
+                                        {% else %}
+                                            {{value}}
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <br>
+                <br>
+                <h3>communicating_files table values</h3>
+                <div class="table_container">
+                    <table>
+                        <tr>
+                            <th>comm_file_id</th>
+                            <th>comm_file_name</th>
+                            <th>related_object_id</th>
+                            <th>date_scanned</th>
+                            <th>detection_score</th>
+                            <th>severity</th>
+                            <th>comm_file_type</th>
+                        </tr>
+                        {% for dicts in comm_files %}
+                            <tr class="{% for x, y in dicts.items %}{% if x == 'severity' and y == 'low' %}severity-low{% endif %}{% if x == 'severity' and y == 'medium' %}severity-medium{% endif %}{% if x == 'severity' and y == 'high' %}severity-high{% endif %}{% endfor %}">
+                                {% for key, value in dicts.items %}
+                                    <td>
+                                        {% if key == "comm_file_id" %}
+                                            <a href="/fastapi_table/files/{{value}}">{{value}}</a>
+                                        {% else %}
+                                            {{value}}
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% else %}
+                <p>value not found</p>
+            {% endif %}
+        </div>
     </body>
 </html>

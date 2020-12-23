@@ -1,5 +1,9 @@
 h2 {
-  color: blue;
+  color: black;
+}
+
+div.main-body{
+  margin: 10px;
 }
 
 /* Table CSS */
@@ -18,11 +22,20 @@ table {
 th, td {
   font-size: 15px;
 }
+.severity-low {
+  background-color: rgb(195, 247, 195);
+}
+.severity-medium {
+  background-color: rgb(255, 255, 175);
+}
+.severity-high {
+  background-color: rgb(255, 215, 222);
+}
 
 /* Page Header CSS */
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #c4c4c4;
   padding: 10px 10px;
 }
 .header a {

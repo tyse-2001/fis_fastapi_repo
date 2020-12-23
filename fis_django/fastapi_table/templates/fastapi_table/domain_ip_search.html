@@ -6,35 +6,37 @@
     </head>
     <body>
         {% include "fastapi_table/page_header.html" %}
-        <h2>Search for domain/ip entries</h2>
-        <form action="/fastapi_table/domain_ip_get/" method="get">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Submit">
-        </form>
-        <br>
-        <h3>List of searched domains/ips:</h3>
-        <table>
-            <tr>
-                <th>object_id</th>
-                <th>object_type</th>
-                <th>object_last_updated</th>
-                <th>score</th>
-                <th>severity</th>
-                <th>comm_count</th>
-                <th>ref_count</th>
-            </tr>
-            {% for entries in domain_ip_list %}
+        <div class="main-body">
+            <h2>Search for domain/ip entries</h2>
+            <form action="/fastapi_table/domain_ip_get/" method="get">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">
+            </form>
+            <br>
+            <h3>List of searched domains/ips:</h3>
+            <table>
                 <tr>
-                    <td><a href="/fastapi_table/domain_ip/{{ entries.object_id }}">{{ entries.object_id }}</a></td>
-                    <td>{{ entries.object_type }}</td>
-                    <td>{{ entries.object_last_updated }}</td>
-                    <td>{{ entries.score }}</td>
-                    <td>{{ entries.severity }}</td>
-                    <td>{{ entries.comm_count }}</td>
-                    <td>{{ entries.ref_count }}</td>
+                    <th>object_id</th>
+                    <th>object_type</th>
+                    <th>object_last_updated</th>
+                    <th>score</th>
+                    <th>severity</th>
+                    <th>comm_count</th>
+                    <th>ref_count</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for entries in domain_ip_list %}
+                    <tr class="{% if entries.severity == 'low' %}severity-low{% endif %}{% if entries.severity == 'medium' %}severity-medium{% endif %}{% if entries.severity == 'high' %}severity-high{% endif %}">
+                        <td><a href="/fastapi_table/domain_ip/{{ entries.object_id }}">{{ entries.object_id }}</a></td>
+                        <td>{{ entries.object_type }}</td>
+                        <td>{{ entries.object_last_updated }}</td>
+                        <td>{{ entries.score }}</td>
+                        <td>{{ entries.severity }}</td>
+                        <td>{{ entries.comm_count }}</td>
+                        <td>{{ entries.ref_count }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 </html>

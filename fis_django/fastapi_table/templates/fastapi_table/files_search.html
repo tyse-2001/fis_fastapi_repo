@@ -6,33 +6,35 @@
     </head>
     <body>
         {% include "fastapi_table/page_header.html" %}
-        <h2>Search for file entries</h2>
-        <form action="/fastapi_table/files_get/" method="get">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Submit">
-        </form>
-        <br>
-        <h3>List of searched files:</h3>
-        <table>
-            <tr>
-                <th>file_id</th>
-                <th>file_name</th>
-                <th>file_date_scanned</th>
-                <th>score</th>
-                <th>severity</th>
-                <th>exec_parent_count</th>
-            </tr>
-            {% for entries in files_list %}
+        <div class="main-body">
+            <h2>Search for file entries</h2>
+            <form action="/fastapi_table/files_get/" method="get">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">
+            </form>
+            <br>
+            <h3>List of searched files:</h3>
+            <table>
                 <tr>
-                    <td><a href="/fastapi_table/files/{{ entries.file_id }}">{{ entries.file_id }}</a></td>
-                    <td>{{ entries.file_name }}</td>
-                    <td>{{ entries.file_date_scanned }}</td>
-                    <td>{{ entries.score }}</td>
-                    <td>{{ entries.severity }}</td>
-                    <td>{{ entries.exec_parent_count }}</td>
+                    <th>file_id</th>
+                    <th>file_name</th>
+                    <th>file_date_scanned</th>
+                    <th>score</th>
+                    <th>severity</th>
+                    <th>exec_parent_count</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for entries in files_list %}
+                    <tr class="{% if entries.severity == 'low' %}severity-low{% endif %}{% if entries.severity == 'medium' %}severity-medium{% endif %}{% if entries.severity == 'high' %}severity-high{% endif %}">
+                        <td><a href="/fastapi_table/files/{{ entries.file_id }}">{{ entries.file_id }}</a></td>
+                        <td>{{ entries.file_name }}</td>
+                        <td>{{ entries.file_date_scanned }}</td>
+                        <td>{{ entries.score }}</td>
+                        <td>{{ entries.severity }}</td>
+                        <td>{{ entries.exec_parent_count }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 </html>

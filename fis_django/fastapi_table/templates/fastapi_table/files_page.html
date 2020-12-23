@@ -6,52 +6,60 @@
     </head>
     <body>
         {% include "fastapi_table/page_header.html" %}
-        <h2>Files page</h2>
-        <br>
-        <form action="/fastapi_table/files_get/" method="get">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Submit">
-        </form>
-        <br>
-        {% if json %}
-            <h3>files table values</h3>
-            <table>
-                <tr>
-                    {% for key in json.keys %}
-                        <th>{{key}}</th>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for value in json.values %}
-                        <td>{{value}}</td>
-                    {% endfor %}
-                </tr>
-            </table>
+        <div class="main-body">
+            <h2>Files page</h2>
             <br>
+            <form action="/fastapi_table/files_get/" method="get">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">
+            </form>
             <br>
-            <h3>execution_parents table values</h3>
-            <div class="table_container">
+            {% if json %}
+                <h3>files table values</h3>
                 <table>
                     <tr>
-                        <th>parent_id</th>
-                        <th>related_file_id</th>
-                        <th>exec_date_scanned</th>
-                        <th>detection_score</th>
-                        <th>severity</th>
-                        <th>parent_type</th>
+                        {% for key in json.keys %}
+                            <th>{{key}}</th>
+                        {% endfor %}
                     </tr>
-                    {% for dicts in exec_parent %}
-                        <tr>
-                            {% for key, value in dicts.items %}
-                                <td>{{value}}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
+                    <tr class="{% for x, y in json.items %}{% if x == 'severity' and y == 'low' %}severity-low{% endif %}{% if x == 'severity' and y == 'medium' %}severity-medium{% endif %}{% if x == 'severity' and y == 'high' %}severity-high{% endif %}{% endfor %}">
+                        {% for value in json.values %}
+                            <td>{{value}}</td>
+                        {% endfor %}
+                    </tr>
                 </table>
-            </div>
-        {% else %}
-            <p>value not found</p>
-        {% endif %}
+                <br>
+                <br>
+                <h3>execution_parents table values</h3>
+                <div class="table_container">
+                    <table>
+                        <tr>
+                            <th>parent_id</th>
+                            <th>related_file_id</th>
+                            <th>exec_date_scanned</th>
+                            <th>detection_score</th>
+                            <th>severity</th>
+                            <th>parent_type</th>
+                        </tr>
+                        {% for dicts in exec_parent %}
+                            <tr class="{% for x, y in dicts.items %}{% if x == 'severity' and y == 'low' %}severity-low{% endif %}{% if x == 'severity' and y == 'medium' %}severity-medium{% endif %}{% if x == 'severity' and y == 'high' %}severity-high{% endif %}{% endfor %}">
+                                {% for key, value in dicts.items %}
+                                    <td>
+                                        {% if key == "parent_id" %}
+                                            <a href="/fastapi_table/files/{{value}}">{{value}}</a>
+                                        {% else %}
+                                            {{value}}
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            {% else %}
+                <p>value not found</p>
+            {% endif %}
+        </div>
     </body>
 </html>
