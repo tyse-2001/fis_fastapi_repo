@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.template import loader
 
 from .form import DomainIpForm, FilesForm
+from .models import DomainIp, Files
 
 # Create your views here.
 
@@ -36,6 +37,24 @@ def search_domain_ip(request, object_id):
     file_dict = json.loads(requests.get(url).text)
 
     if not "detail" in file_dict:
+        obj = 0
+        try:
+            obj = DomainIp.objects.get(object_id=object_id)
+            #print(obj.object_id)
+        except Exception as e:
+            print(e)
+
+        if not obj:
+            entry = DomainIp.objects.create_domain_ip(
+                file_dict["object_id"],
+                file_dict["object_type"],
+                file_dict["object_last_updated"],
+                file_dict["score"],
+                file_dict["severity"],
+                file_dict["comm_count"],
+                file_dict["ref_count"],
+            )
+
         ref_files = file_dict["ref_files"]
         comm_files = file_dict["comm_files"]
 
@@ -79,6 +98,22 @@ def search_files(request, file_id):
     file_dict = json.loads(requests.get(url).text)
 
     if not "detail" in file_dict:
+        obj = 0
+        try:
+            obj = Files.objects.get(file_id=file_id)
+        except Exception as e:
+            print(e)
+        
+        if not obj:
+            entry = Files.objects.create_file(
+                file_dict["file_id"],
+                file_dict["file_name"],
+                file_dict["file_date_scanned"],
+                file_dict["score"],
+                file_dict["severity"],
+                file_dict["exec_parent_count"],
+            )
+
         exec_parent = file_dict["exec_parent"]
         file_dict.pop("exec_parent")
     else:
