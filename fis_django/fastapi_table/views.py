@@ -16,7 +16,8 @@ def index(request):
 # Domain_Ip functions
 def domain_ip_search(request):
     context = {
-        'form': DomainIpForm()
+        'form': DomainIpForm(),
+        'domain_ip_list': DomainIp.objects.all()
     }
     return render(request, 'fastapi_table/domain_ip_search.html', context)
 
@@ -77,7 +78,8 @@ def search_domain_ip(request, object_id):
 # Files functions
 def files_search(request):
     context = {
-        'form': FilesForm()
+        'form': FilesForm(),
+        'files_list': Files.objects.all()
     }
     return render(request, 'fastapi_table/files_search.html', context)
 

@@ -12,5 +12,29 @@
             {{ form }}
             <input type="submit" value="Submit">
         </form>
+        <br>
+        <h3>List of searched domains/ips:</h3>
+        <table>
+            <tr>
+                <th>object_id</th>
+                <th>object_type</th>
+                <th>object_last_updated</th>
+                <th>score</th>
+                <th>severity</th>
+                <th>comm_count</th>
+                <th>ref_count</th>
+            </tr>
+            {% for entries in domain_ip_list %}
+                <tr>
+                    <td><a href="/fastapi_table/domain_ip/{{ entries.object_id }}">{{ entries.object_id }}</a></td>
+                    <td>{{ entries.object_type }}</td>
+                    <td>{{ entries.object_last_updated }}</td>
+                    <td>{{ entries.score }}</td>
+                    <td>{{ entries.severity }}</td>
+                    <td>{{ entries.comm_count }}</td>
+                    <td>{{ entries.ref_count }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>
