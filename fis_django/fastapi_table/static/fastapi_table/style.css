@@ -6,6 +6,10 @@ div.main-body{
   margin: 10px;
 }
 
+div.page_name{
+  text-align: center;
+}
+
 /* Table CSS */
 table, th, td {
   border: 1px solid black;
@@ -20,7 +24,7 @@ table {
   width: 100%
 }
 th, td {
-  font-size: 15px;
+  font-size: 13px;
 }
 .severity-low {
   background-color: rgb(195, 247, 195);
