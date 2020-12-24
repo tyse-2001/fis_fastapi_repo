@@ -1,13 +1,11 @@
-h2 {
-  color: black;
-}
-
 div.main-body{
-  margin: 10px;
+  margin: 20px;
 }
-
 div.page_name{
   text-align: center;
+}
+.table-header{
+  margin-bottom: 15px;
 }
 
 /* Table CSS */
@@ -39,16 +37,16 @@ th, td {
 /* Page Header CSS */
 .header {
   overflow: hidden;
-  background-color: #c4c4c4;
+  background-color: #3b3b3b;
   padding: 10px 10px;
 }
 .header a {
   float: left;
-  color: black;
+  color: white;
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px; 
+  font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
 }  
