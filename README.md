@@ -14,10 +14,10 @@ Repository for FastApi code
 -  Using sqlmap to scan web application to check for vulnerabilities about sql injection.
 - (New) Update the layout of the pages according to the sample given in Telegram
 - (New) Customize the Admin page:
-..- Add a search bar
-..- Add a filter
-..- Add a button that redirects to the admin page
-..- Table that displays the information of the scan results
+  - Add a search bar
+  - Add a filter
+  - Add a button that redirects to the admin page
+  - Table that displays the information of the scan results
 
 ## Other notes:
 - Uvicorn server running on port 8000
