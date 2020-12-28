@@ -16,7 +16,7 @@ Repository for FastApi code
 - (New) Customize the Admin page:
   - Add a search bar
   - Add a filter
-  - Add a button that redirects to the admin page
+  - Add a button that redirects to the search page
   - Table that displays the information of the scan results
 
 ## Other notes:

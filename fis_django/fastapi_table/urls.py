@@ -15,4 +15,7 @@ urlpatterns = [
     path('files/', views.files_search, name='files_search'),
     path('files_get/', views.files_redirect, name='files_redirect'),
     path('files/<str:file_id>/', views.search_files, name='search_files'),
+
+    # Search
+    path('search/', views.search_page, name='search_page'),
 ]

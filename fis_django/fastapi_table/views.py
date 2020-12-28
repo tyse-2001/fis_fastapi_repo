@@ -13,6 +13,13 @@ from .models import DomainIp, Files
 def index(request):
     return render(request, 'fastapi_table/index.html')
 
+def search_page(request):
+    context = {
+        'domain_ip_form': DomainIpForm(),
+        'files_form': FilesForm(),
+    }
+    return render(request, 'fastapi_table/search.html', context)
+
 # Domain_Ip functions
 def domain_ip_search(request):
     context = {
