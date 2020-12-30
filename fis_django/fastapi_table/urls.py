@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'fastapi_table'
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.search_page, name='search_page'),
 
     # Domain Ip
     path('domain_ip/', views.domain_ip_search, name='domain_ip_search'),
@@ -17,5 +17,5 @@ urlpatterns = [
     path('files/<str:file_id>/', views.search_files, name='search_files'),
 
     # Search
-    path('search/', views.search_page, name='search_page'),
+    #path('search/', views.search_page, name='search_page'),
 ]

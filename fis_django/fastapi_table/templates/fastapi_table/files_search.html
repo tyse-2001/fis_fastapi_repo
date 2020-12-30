@@ -28,12 +28,14 @@
                     <th>exec_parent_count</th>
                 </tr>
                 {% for entries in files_list %}
-                    <tr class="{% if entries.severity == 'low' %}severity-low{% endif %}{% if entries.severity == 'medium' %}severity-medium{% endif %}{% if entries.severity == 'high' %}severity-high{% endif %}">
+                    <tr>
                         <td><a href="/fastapi_table/files/{{ entries.file_id }}">{{ entries.file_id }}</a></td>
                         <td>{{ entries.file_name }}</td>
                         <td>{{ entries.file_date_scanned }}</td>
                         <td>{{ entries.score }}</td>
-                        <td>{{ entries.severity }}</td>
+                        <td class="{% if entries.severity == 'low' %}severity-low{% endif %}{% if entries.severity == 'medium' %}severity-medium{% endif %}{% if entries.severity == 'high' %}severity-high{% endif %}">
+                            {{ entries.severity }}
+                        </td>
                         <td>{{ entries.exec_parent_count }}</td>
                     </tr>
                 {% endfor %}

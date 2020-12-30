@@ -26,9 +26,11 @@
                             <th>{{key}}</th>
                         {% endfor %}
                     </tr>
-                    <tr class="{% for x, y in json.items %}{% if x == 'severity' and y == 'low' %}severity-low{% endif %}{% if x == 'severity' and y == 'medium' %}severity-medium{% endif %}{% if x == 'severity' and y == 'high' %}severity-high{% endif %}{% endfor %}">
+                    <tr>
                         {% for value in json.values %}
-                            <td>{{value}}</td>
+                            <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
+                                {{value}}
+                            </td>
                         {% endfor %}
                     </tr>
                 </table>
@@ -46,9 +48,9 @@
                             <th>parent_type</th>
                         </tr>
                         {% for dicts in exec_parent %}
-                            <tr class="{% for x, y in dicts.items %}{% if x == 'severity' and y == 'low' %}severity-low{% endif %}{% if x == 'severity' and y == 'medium' %}severity-medium{% endif %}{% if x == 'severity' and y == 'high' %}severity-high{% endif %}{% endfor %}">
+                            <tr>
                                 {% for key, value in dicts.items %}
-                                    <td>
+                                    <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
                                         {% if key == "parent_id" %}
                                             <a href="/fastapi_table/files/{{value}}">{{value}}</a>
                                         {% else %}

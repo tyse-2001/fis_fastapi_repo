@@ -6,6 +6,8 @@ from .models import DomainIp, Files
 
 @admin.register(Files)
 class FilesAdmin(admin.ModelAdmin):
+    change_list_template = "admin/extend_changelist.html"
+
     list_display = ("file_id", "file_name", "file_date_scanned", "score", "severity", "exec_parent_count")
     list_filter = ("severity", )
     search_fields = ("file_id", )
@@ -22,6 +24,8 @@ class FilesAdmin(admin.ModelAdmin):
 
 @admin.register(DomainIp)
 class DomainIpAdmin(admin.ModelAdmin):
+    change_list_template = "admin/extend_changelist.html"
+
     list_display = ("object_id", "object_type", "object_last_updated", "score", "severity", "comm_count", "ref_count")
     list_filter = ("severity", )
     search_fields = ("object_id", )
