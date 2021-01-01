@@ -11,11 +11,7 @@
             <div class="page_name">
                 <h2>Domain/Ip page</h2>
             </div>
-            <form action="/fastapi_table/domain_ip_get/" method="get">
-                {% csrf_token %}
-                {{ form }}
-                <input type="submit" value="Submit">
-            </form>
+            {% include "fastapi_table/form_tabs.html" %}
             <br>
             <h4 class="table-header">List of searched domains/ips:</h4>
             <table>

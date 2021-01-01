@@ -23,7 +23,8 @@ def search_page(request):
 # Domain_Ip functions
 def domain_ip_search(request):
     context = {
-        'form': DomainIpForm(),
+        'domain_ip_form': DomainIpForm(),
+        'files_form': FilesForm(),
         'domain_ip_list': DomainIp.objects.all()
     }
     return render(request, 'fastapi_table/domain_ip_search.html', context)
@@ -77,7 +78,8 @@ def search_domain_ip(request, object_id):
         'json': file_dict,
         'ref_files': ref_files,
         'comm_files': comm_files,
-        'form': DomainIpForm()
+        'domain_ip_form': DomainIpForm(),
+        'files_form': FilesForm(),
     }
 
     return render(request, 'fastapi_table/domain_ip_page.html', context)
@@ -85,7 +87,8 @@ def search_domain_ip(request, object_id):
 # Files functions
 def files_search(request):
     context = {
-        'form': FilesForm(),
+        'domain_ip_form': DomainIpForm(),
+        'files_form': FilesForm(),
         'files_list': Files.objects.all()
     }
     return render(request, 'fastapi_table/files_search.html', context)
@@ -132,7 +135,8 @@ def search_files(request, file_id):
     context = {
         'json': file_dict,
         'exec_parent': exec_parent,
-        'form': FilesForm()
+        'domain_ip_form': DomainIpForm(),
+        'files_form': FilesForm(),
     }
 
     return render(request, 'fastapi_table/files_page.html', context)

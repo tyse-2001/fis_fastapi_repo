@@ -1,0 +1,52 @@
+<script>
+    function openForm(evt, formName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(formName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+</script>
+
+<!-- Tab links -->
+<div class="tab">
+    <button class="tablinks" onclick="openForm(event, 'domain_ip_form')" id="defaultOpen">Domains/Ips</button>
+    <button class="tablinks" onclick="openForm(event, 'files_form')">Files</button>
+</div>
+
+<!-- Tab content -->
+<div id="domain_ip_form" class="tabcontent">
+    <div class="tab-form">
+        <form action="/fastapi_table/domain_ip_get/" method="get">
+            {% csrf_token %}
+            {{ domain_ip_form }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+<div id="files_form" class="tabcontent">
+    <div class="tab-form">
+        <form action="/fastapi_table/files_get/" method="get">
+            {% csrf_token %}
+            {{ files_form }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+<script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
