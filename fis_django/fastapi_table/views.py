@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.template import loader
 
 from .form import DomainIpForm, FilesForm
-from .models import DomainIp, Files
+from .models import DomainIp, ReferrerFiles, CommunicatingFiles, Files, ExecutionParents
 
 # Create your views here.
 
@@ -65,7 +65,27 @@ def search_domain_ip(request, object_id):
             )
 
         ref_files = file_dict["ref_files"]
+        for dictionary in ref_files:
+            referrer_file_entry = ReferrerFiles.objects.create_referrer_file(
+                dictionary["ref_file_id"],
+                dictionary["ref_file_name"],
+                dictionary["related_object_id"],
+                dictionary["date_scanned"],
+                dictionary["detection_score"],
+                dictionary["severity"],
+                dictionary["ref_file_type"]
+            )
         comm_files = file_dict["comm_files"]
+        for dictionary in comm_files:
+            communicating_file_entry = CommunicatingFiles.objects.create_communicating_file(
+                dictionary["comm_file_id"],
+                dictionary["comm_file_name"],
+                dictionary["related_object_id"],
+                dictionary["date_scanned"],
+                dictionary["detection_score"],
+                dictionary["severity"],
+                dictionary["comm_file_type"]
+            )
 
         file_dict.pop("ref_files")
         file_dict.pop("comm_files")
@@ -127,6 +147,16 @@ def search_files(request, file_id):
             )
 
         exec_parent = file_dict["exec_parent"]
+        for dictionary in exec_parent:
+            exec_parent_entry = ExecutionParents.objects.create_exec_parent(
+                dictionary["parent_id"],
+                dictionary["related_file_id"],
+                dictionary["exec_date_scanned"],
+                dictionary["detection_score"],
+                dictionary["severity"],
+                dictionary["parent_type"],
+            )
+
         file_dict.pop("exec_parent")
     else:
         file_dict = {}
