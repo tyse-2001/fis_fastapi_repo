@@ -51,6 +51,7 @@ th, td {
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+  transition: 0.3s;
 }  
 .header a.logo {
   font-size: 25px;
@@ -86,33 +87,40 @@ th, td {
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  /*border: 2px solid #3b3b3b;*/
+  background-color: #3b3b3b;
 }
 /* Style the buttons that are used to open the tab content */
 .tab button {
   background-color: inherit;
   float: left;
-  border: none;
+  border: 2px solid #3b3b3b;
+  border-bottom: none;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 8px 8px;
   transition: 0.3s;
+  color: white;
+  border-radius: 4px 4px 0px 0px;
 }
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: white;
+  color: black;
 }
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: rgb(233, 233, 233);
+  color: black;
 }
 /* Style the tab content */
 .tabcontent {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  /*border: 2px solid #3b3b3b;*/
+  border: 2px solid #3b3b3b;
   border-top: none;
+  background-color: rgb(233, 233, 233);
 }
 .tab-form {
   margin: 10px;
