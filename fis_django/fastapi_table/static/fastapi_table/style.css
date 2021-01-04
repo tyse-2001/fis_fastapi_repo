@@ -98,10 +98,10 @@ th, td {
   border-bottom: none;
   outline: none;
   cursor: pointer;
-  padding: 8px 8px;
+  padding: 5px 10px;
   transition: 0.3s;
   color: white;
-  border-radius: 4px 4px 0px 0px;
+  border-radius: 8px 8px 0px 0px;
 }
 /* Change background color of buttons on hover */
 .tab button:hover {

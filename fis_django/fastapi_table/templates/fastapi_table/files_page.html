@@ -35,15 +35,18 @@
                 <h4 class="table-header">execution_parents table values</h4>
                 <div class="table_container">
                     <table>
-                        <tr>
-                            <th>parent_id</th>
-                            <th>related_file_id</th>
-                            <th>exec_date_scanned</th>
-                            <th>detection_score</th>
-                            <th>severity</th>
-                            <th>parent_type</th>
-                        </tr>
-                        {% for dicts in exec_parent %}
+                        <thead>
+                            <tr>
+                                <th>parent_id</th>
+                                <th>related_file_id</th>
+                                <th>exec_date_scanned</th>
+                                <th>detection_score</th>
+                                <th>severity</th>
+                                <th>parent_type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dicts in exec_parent %}
                             <tr>
                                 {% for key, value in dicts.items %}
                                     <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
@@ -55,7 +58,8 @@
                                     </td>
                                 {% endfor %}
                             </tr>
-                        {% endfor %}
+                            {% endfor %}
+                        </tbody>
                     </table>
                 </div>
             {% else %}
