@@ -7,17 +7,21 @@ Repository for FastApi code
 - Reading Django Framework
 - Apply the fastapi to django
 - Make a frontend page that have a search box, a button to excute.
--  Using django template to make front-end look better.
--  Send supervisor a picture about the result of sqlmap scan on telegram or email.
-
-## In-progress tasks:
--  Using sqlmap to scan web application to check for vulnerabilities about sql injection.
-- (New) Update the layout of the pages according to the sample given in Telegram
-- (New) Customize the Admin page:
+- Using django template to make front-end look better.
+- Send supervisor a picture about the result of sqlmap scan on telegram or email.
+- Update the layout of the pages according to the sample given in Telegram
+- Customize the Admin page:
   - Add a search bar
   - Add a filter
   - Add a button that redirects to the search page
   - Table that displays the information of the scan results
+- Implement logic to stop update of database if there is already a relevant entry
+
+## In-progress tasks:
+-  Using sqlmap to scan web application to check for vulnerabilities about sql injection.
+- (New) Implement scrolling to the table body only, with header in place
+- (New) Improve the overall look of the site
+
 
 ## Other notes:
 - Uvicorn server running on port 8000

@@ -46,14 +46,14 @@ def search_domain_ip(request, object_id):
     file_dict = json.loads(requests.get(url).text)
 
     if not "detail" in file_dict:
-        obj = 0
+        check = 0
         try:
-            obj = DomainIp.objects.get(object_id=object_id)
+            check = DomainIp.objects.get(object_id=object_id)
             #print(obj.object_id)
         except Exception as e:
             print(e)
 
-        if not obj:
+        if not check:
             entry = DomainIp.objects.create_domain_ip(
                 file_dict["object_id"],
                 file_dict["object_type"],
@@ -64,28 +64,41 @@ def search_domain_ip(request, object_id):
                 file_dict["ref_count"],
             )
 
+
         ref_files = file_dict["ref_files"]
-        for dictionary in ref_files:
-            referrer_file_entry = ReferrerFiles.objects.create_referrer_file(
-                dictionary["ref_file_id"],
-                dictionary["ref_file_name"],
-                dictionary["related_object_id"],
-                dictionary["date_scanned"],
-                dictionary["detection_score"],
-                dictionary["severity"],
-                dictionary["ref_file_type"]
-            )
+        check = 0
+        try:
+            check = ReferrerFiles.objects.all().filter(related_object_id=object_id)
+        except Exception as e:
+            print(e)
+        if not check:
+            for dictionary in ref_files:
+                referrer_file_entry = ReferrerFiles.objects.create_referrer_file(
+                    dictionary["ref_file_id"],
+                    dictionary["ref_file_name"],
+                    dictionary["related_object_id"],
+                    dictionary["date_scanned"],
+                    dictionary["detection_score"],
+                    dictionary["severity"],
+                    dictionary["ref_file_type"]
+                )
+        check = 0
         comm_files = file_dict["comm_files"]
-        for dictionary in comm_files:
-            communicating_file_entry = CommunicatingFiles.objects.create_communicating_file(
-                dictionary["comm_file_id"],
-                dictionary["comm_file_name"],
-                dictionary["related_object_id"],
-                dictionary["date_scanned"],
-                dictionary["detection_score"],
-                dictionary["severity"],
-                dictionary["comm_file_type"]
-            )
+        try:
+            check = CommunicatingFiles.objects.all().filter(related_object_id=object_id)
+        except Exception as e:
+            print(e)
+        if not check:
+            for dictionary in comm_files:
+                communicating_file_entry = CommunicatingFiles.objects.create_communicating_file(
+                    dictionary["comm_file_id"],
+                    dictionary["comm_file_name"],
+                    dictionary["related_object_id"],
+                    dictionary["date_scanned"],
+                    dictionary["detection_score"],
+                    dictionary["severity"],
+                    dictionary["comm_file_type"]
+                )
 
         file_dict.pop("ref_files")
         file_dict.pop("comm_files")
@@ -130,13 +143,13 @@ def search_files(request, file_id):
     file_dict = json.loads(requests.get(url).text)
 
     if not "detail" in file_dict:
-        obj = 0
+        check = 0
         try:
-            obj = Files.objects.get(file_id=file_id)
+            check = Files.objects.get(file_id=file_id)
         except Exception as e:
             print(e)
         
-        if not obj:
+        if not check:
             entry = Files.objects.create_file(
                 file_dict["file_id"],
                 file_dict["file_name"],
@@ -146,16 +159,23 @@ def search_files(request, file_id):
                 file_dict["exec_parent_count"],
             )
 
+        check = 0
+        try:
+            check = ExecutionParents.objects.all().filter(related_file_id=file_id)
+        except Exception as e:
+            print(e)
+        
         exec_parent = file_dict["exec_parent"]
-        for dictionary in exec_parent:
-            exec_parent_entry = ExecutionParents.objects.create_exec_parent(
-                dictionary["parent_id"],
-                dictionary["related_file_id"],
-                dictionary["exec_date_scanned"],
-                dictionary["detection_score"],
-                dictionary["severity"],
-                dictionary["parent_type"],
-            )
+        if not check:
+            for dictionary in exec_parent:
+                exec_parent_entry = ExecutionParents.objects.create_exec_parent(
+                    dictionary["parent_id"],
+                    dictionary["related_file_id"],
+                    dictionary["exec_date_scanned"],
+                    dictionary["detection_score"],
+                    dictionary["severity"],
+                    dictionary["parent_type"],
+                )
 
         file_dict.pop("exec_parent")
     else:
