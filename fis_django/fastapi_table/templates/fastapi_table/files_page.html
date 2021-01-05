@@ -17,18 +17,22 @@
             {% if json %}
                 <h4 class="table-header">files table values</h4>
                 <table>
-                    <tr>
-                        {% for key in json.keys %}
-                            <th>{{key}}</th>
-                        {% endfor %}
-                    </tr>
-                    <tr>
-                        {% for value in json.values %}
-                            <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
-                                {{value}}
-                            </td>
-                        {% endfor %}
-                    </tr>
+                    <thead>
+                        <tr>
+                            {% for key in json.keys %}
+                                <th>{{key}}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for value in json.values %}
+                                <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
+                                    {{value}}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
                 </table>
                 <br>
                 <br>

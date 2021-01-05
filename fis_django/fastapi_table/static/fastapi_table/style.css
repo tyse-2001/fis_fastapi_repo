@@ -11,19 +11,32 @@ div.page_name{
 
 /* Table CSS */
 table, th, td {
-  border: 1px solid black;
+  border: 1px solid #3b3b3b;
   }
-div.table_container {
-  border: 1px solid black;
+.table_container {
+  border: 1px solid #3b3b3b;
   height: auto;
   max-height: 500px;
   overflow-x: auto;
 }
+.table_container thead th {
+  position: sticky;
+  top: 0;
+}
+
 table {
   width: 100%
 }
 th, td {
   font-size: 13px;
+}
+th {
+  background-color: #3b3b3b;
+  color: white;
+  padding: 8px 5px;
+}
+td {
+  background-color: rgb(233, 233, 233);
 }
 .severity-low {
   background-color: rgb(195, 247, 195);
@@ -34,7 +47,6 @@ th, td {
 .severity-high {
   background-color: rgb(255, 215, 222);
 }
-
 
 /* Page Header CSS */
 .header {

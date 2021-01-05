@@ -15,16 +15,19 @@
             <br>
             <h4 class="table-header">Domains/Ip search history:</h4>
             <table>
-                <tr>
-                    <th>object_id</th>
-                    <th>object_type</th>
-                    <th>object_last_updated</th>
-                    <th>score</th>
-                    <th>severity</th>
-                    <th>comm_count</th>
-                    <th>ref_count</th>
-                </tr>
-                {% for entries in domain_ip_list %}
+                <thead>
+                    <tr>
+                        <th>object_id</th>
+                        <th>object_type</th>
+                        <th>object_last_updated</th>
+                        <th>score</th>
+                        <th>severity</th>
+                        <th>comm_count</th>
+                        <th>ref_count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entries in domain_ip_list %}
                     <tr>
                         <td><a href="/fastapi_table/domain_ip/{{ entries.object_id }}">{{ entries.object_id }}</a></td>
                         <td>{{ entries.object_type }}</td>
@@ -37,6 +40,7 @@
                         <td>{{ entries.ref_count }}</td>
                     </tr>
                 {% endfor %}
+                </tbody>
             </table>
         </div>
     </body>

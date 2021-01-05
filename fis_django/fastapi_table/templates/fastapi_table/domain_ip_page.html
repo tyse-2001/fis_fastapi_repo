@@ -17,32 +17,39 @@
             {% if json %}
                 <h4 class="table-header">domain_ip table values</h4>
                 <table>
-                    <tr>
-                        {% for key in json.keys %}
-                            <th>{{key}}</th>
-                        {% endfor %}
-                    </tr>
-                    <tr>
-                        {% for value in json.values %}
-                            <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">{{value}}</td>
-                        {% endfor %} 
-                    </tr>
+                    <thead>
+                        <tr>
+                            {% for key in json.keys %}
+                                <th>{{key}}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for value in json.values %}
+                                <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">{{value}}</td>
+                            {% endfor %} 
+                        </tr>
+                    </tbody>
                 </table>
                 <br>
                 <br>
                 <h4 class="table-header">referrer_files table values</h4>
                 <div class="table_container">
                     <table>
-                        <tr>
-                            <th>ref_file_id</th>
-                            <th>ref_file_name</th>
-                            <th>related_object_id</th>
-                            <th>date_scanned</th>
-                            <th>detection_score</th>
-                            <th>severity</th>
-                            <th>ref_file_type</th>
-                        </tr>
-                        {% for dicts in ref_files %}
+                        <thead>
+                            <tr>
+                                <th>ref_file_id</th>
+                                <th>ref_file_name</th>
+                                <th>related_object_id</th>
+                                <th>date_scanned</th>
+                                <th>detection_score</th>
+                                <th>severity</th>
+                                <th>ref_file_type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dicts in ref_files %}
                             <tr>
                                 {% for key, value in dicts.items %}
                                     <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
@@ -55,6 +62,7 @@
                                 {% endfor %}
                             </tr>
                         {% endfor %}
+                        </tbody>
                     </table>
                 </div>
                 <br>
@@ -62,16 +70,19 @@
                 <h4 class="table-header">communicating_files table values</h4>
                 <div class="table_container">
                     <table>
-                        <tr>
-                            <th>comm_file_id</th>
-                            <th>comm_file_name</th>
-                            <th>related_object_id</th>
-                            <th>date_scanned</th>
-                            <th>detection_score</th>
-                            <th>severity</th>
-                            <th>comm_file_type</th>
-                        </tr>
-                        {% for dicts in comm_files %}
+                        <thead>
+                            <tr>
+                                <th>comm_file_id</th>
+                                <th>comm_file_name</th>
+                                <th>related_object_id</th>
+                                <th>date_scanned</th>
+                                <th>detection_score</th>
+                                <th>severity</th>
+                                <th>comm_file_type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dicts in comm_files %}
                             <tr>
                                 {% for key, value in dicts.items %}
                                     <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
@@ -84,6 +95,7 @@
                                 {% endfor %}
                             </tr>
                         {% endfor %}
+                        </tbody>
                     </table>
                 </div>
             {% else %}

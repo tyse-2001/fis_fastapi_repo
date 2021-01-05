@@ -16,10 +16,10 @@ Repository for FastApi code
   - Add a button that redirects to the search page
   - Table that displays the information of the scan results
 - Implement logic to stop update of database if there is already a relevant entry
+- Implement scrolling to the table body only, with header in place
 
 ## In-progress tasks:
--  Using sqlmap to scan web application to check for vulnerabilities about sql injection.
-- (New) Implement scrolling to the table body only, with header in place
+- Using sqlmap to scan web application to check for vulnerabilities about sql injection.
 - (New) Improve the overall look of the site
 
 
