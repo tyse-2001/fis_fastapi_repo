@@ -41,6 +41,7 @@
                 </div>
                 <br>
                 <br>
+                {% if exec_parent %}
                 <h4 class="table-header">execution_parents table values</h4>
                 <div class="table_container">
                     <table>
@@ -71,6 +72,7 @@
                         </tbody>
                     </table>
                 </div>
+                {% endif %}
             {% else %}
                 <p>value not found</p>
             {% endif %}

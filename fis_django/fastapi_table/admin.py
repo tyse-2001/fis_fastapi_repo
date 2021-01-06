@@ -10,7 +10,7 @@ class FilesAdmin(admin.ModelAdmin):
 
     list_display = ("file_id", "file_name", "file_date_scanned", "score", "severity", "exec_parent_count")
     list_filter = ("severity", )
-    search_fields = ("file_id", )
+    search_fields = ("file_id", "file_name")
     #fields = ("file_id", "severity") # Define what fields can be edited here
 
     def suit_cell_attributes(self, obj, column):
@@ -27,7 +27,7 @@ class ExecutionParentsAdmin(admin.ModelAdmin):
     change_list_template = "admin/extend_changelist.html"
 
     list_display = ("parent_id", "related_file_id", "exec_date_scanned", "detection_score", "severity", "parent_type")
-    list_filter = ("severity", )
+    list_filter = ("severity", "related_file_id")
     search_fields = ("parent_id", )
 
     def suit_cell_attributes(self, obj, column):
@@ -61,8 +61,8 @@ class ReferrerFilesAdmin(admin.ModelAdmin):
     change_list_template = "admin/extend_changelist.html"
 
     list_display = ("ref_file_id", "ref_file_name", "related_object_id", "date_scanned", "detection_score", "severity", "ref_file_type")
-    list_filter = ("severity", )
-    search_fields = ("ref_file_id", )
+    list_filter = ("severity", "related_object_id")
+    search_fields = ("ref_file_id", "ref_file_name")
 
     def suit_cell_attributes(self, obj, column):
         if column == 'severity':
@@ -78,8 +78,8 @@ class CommunicatingFilesAdmin(admin.ModelAdmin):
     change_list_template = "admin/extend_changelist.html"
 
     list_display = ("comm_file_id", "comm_file_name", "related_object_id", "date_scanned", "detection_score", "severity", "comm_file_type")
-    list_filter = ("severity", )
-    search_fields = ("comm_file_id", )
+    list_filter = ("severity", "related_object_id")
+    search_fields = ("comm_file_id", "comm_file_name",)
 
     def suit_cell_attributes(self, obj, column):
         if column == 'severity':

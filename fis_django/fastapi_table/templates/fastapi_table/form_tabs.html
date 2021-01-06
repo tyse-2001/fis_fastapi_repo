@@ -29,6 +29,10 @@
 
 <!-- Tab content -->
 <div id="domain_ip_form" class="tabcontent">
+    <p class="form_desc">
+        Search for a Domain/Ip using the search box below.<br>
+        Enter a domain name here.
+    </p>
     <div class="tab-form">
         <form action="/fastapi_table/domain_ip_get/" method="get">
             {% csrf_token %}
@@ -38,6 +42,10 @@
     </div>
 </div>
 <div id="files_form" class="tabcontent">
+    <p class="form_desc">
+        Search for an ip address using the search box below.<br>
+        Enter an ip address here.
+    </p>
     <div class="tab-form">
         <form action="/fastapi_table/files_get/" method="get">
             {% csrf_token %}

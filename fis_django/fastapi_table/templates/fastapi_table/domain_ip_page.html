@@ -36,6 +36,7 @@
                 </div>
                 <br>
                 <br>
+                {% if ref_files %}
                 <h4 class="table-header">referrer_files table values</h4>
                 <div class="table_container">
                     <table>
@@ -67,8 +68,10 @@
                         </tbody>
                     </table>
                 </div>
+                {% endif %}
                 <br>
                 <br>
+                {% if comm_files %}
                 <h4 class="table-header">communicating_files table values</h4>
                 <div class="table_container">
                     <table>
@@ -100,6 +103,7 @@
                         </tbody>
                     </table>
                 </div>
+                {% endif %}
             {% else %}
                 <p>value not found</p>
             {% endif %}
