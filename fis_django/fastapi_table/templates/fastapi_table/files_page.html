@@ -13,27 +13,32 @@
             </div>
             <br>
             {% include "fastapi_table/form_tabs.html" %}
+            <script>
+                document.getElementById("fileOpen").click();
+            </script>
             <br>
             {% if json %}
                 <h4 class="table-header">files table values</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            {% for key in json.keys %}
-                                <th>{{key}}</th>
-                            {% endfor %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            {% for value in json.values %}
-                                <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
-                                    {{value}}
-                                </td>
-                            {% endfor %}
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table_container">
+                    <table>
+                        <thead>
+                            <tr>
+                                {% for key in json.keys %}
+                                    <th>{{key}}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for value in json.values %}
+                                    <td class="{% if value == 'low' %}severity-low{% endif %}{% if value == 'medium' %}severity-medium{% endif %}{% if value == 'high' %}severity-high{% endif %}">
+                                        {{value}}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <br>
                 <br>
                 <h4 class="table-header">execution_parents table values</h4>

@@ -12,34 +12,39 @@
                 <h2>Files page</h2>
             </div>
             {% include "fastapi_table/form_tabs.html" %}
+            <script>
+                document.getElementById("fileOpen").click();
+            </script>
             <br>
             <h4 class="table-header">File search history:</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>file_id</th>
-                        <th>file_name</th>
-                        <th>file_date_scanned</th>
-                        <th>score</th>
-                        <th>severity</th>
-                        <th>exec_parent_count</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for entries in files_list %}
-                    <tr>
-                        <td><a href="/fastapi_table/files/{{ entries.file_id }}">{{ entries.file_id }}</a></td>
-                        <td>{{ entries.file_name }}</td>
-                        <td>{{ entries.file_date_scanned }}</td>
-                        <td>{{ entries.score }}</td>
-                        <td class="{% if entries.severity == 'low' %}severity-low{% endif %}{% if entries.severity == 'medium' %}severity-medium{% endif %}{% if entries.severity == 'high' %}severity-high{% endif %}">
-                            {{ entries.severity }}
-                        </td>
-                        <td>{{ entries.exec_parent_count }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            <div class="table_container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>file_id</th>
+                            <th>file_name</th>
+                            <th>file_date_scanned</th>
+                            <th>score</th>
+                            <th>severity</th>
+                            <th>exec_parent_count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entries in files_list %}
+                        <tr>
+                            <td><a href="/fastapi_table/files/{{ entries.file_id }}">{{ entries.file_id }}</a></td>
+                            <td>{{ entries.file_name }}</td>
+                            <td>{{ entries.file_date_scanned }}</td>
+                            <td>{{ entries.score }}</td>
+                            <td class="{% if entries.severity == 'low' %}severity-low{% endif %}{% if entries.severity == 'medium' %}severity-medium{% endif %}{% if entries.severity == 'high' %}severity-high{% endif %}">
+                                {{ entries.severity }}
+                            </td>
+                            <td>{{ entries.exec_parent_count }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </body>
 </html>
