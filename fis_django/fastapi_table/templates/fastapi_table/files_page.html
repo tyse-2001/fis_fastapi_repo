@@ -18,14 +18,18 @@
             </script>
             <br>
             {% if json %}
+                <p>Hover mouse over header fields to see descriptions</p>
                 <h4 class="table-header">files table values</h4>
                 <div class="table_container">
                     <table>
                         <thead>
                             <tr>
-                                {% for key in json.keys %}
-                                    <th>{{key}}</th>
-                                {% endfor %}
+                                <th title="The SHA256 hash of the file">file_id</th>
+                                <th title="Given name of the file">file_name</th>
+                                <th title="Date of when VirusTotal scanned this file">file_date_scanned</th>
+                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">score</th>
+                                <th title="Danger level of the object. Based on score value">severity</th>
+                                <th title="No. of execution parents associated with the file">exec_parent_count</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,12 +51,12 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>parent_id</th>
-                                <th>related_file_id</th>
-                                <th>exec_date_scanned</th>
-                                <th>detection_score</th>
-                                <th>severity</th>
-                                <th>parent_type</th>
+                                <th title="The SHA256 hash of the execution parent">parent_id</th>
+                                <th title="SHA256 hash of the file this execution parent file is related to">related_file_id</th>
+                                <th title="Date of when VirusTotal scanned this file">exec_date_scanned</th>
+                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">detection_score</th>
+                                <th title="Danger level of the object. Based on score value">severity</th>
+                                <th title="Type of file">parent_type</th>
                             </tr>
                         </thead>
                         <tbody>

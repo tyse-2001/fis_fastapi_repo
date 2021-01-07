@@ -16,17 +16,18 @@
                 document.getElementById("fileOpen").click();
             </script>
             <br>
+            <p>Hover mouse over header fields to see descriptions</p>
             <h4 class="table-header">File search history:</h4>
             <div class="table_container">
                 <table>
                     <thead>
                         <tr>
-                            <th>file_id</th>
-                            <th>file_name</th>
-                            <th>file_date_scanned</th>
-                            <th>score</th>
-                            <th>severity</th>
-                            <th>exec_parent_count</th>
+                            <th title="The SHA256 hash of the file">file_id</th>
+                            <th title="Given name of the file">file_name</th>
+                            <th title="Date of when VirusTotal scanned this file">file_date_scanned</th>
+                            <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">score</th>
+                            <th title="Danger level of the object. Based on score value">severity</th>
+                            <th title="No. of execution parents associated with the file">exec_parent_count</th>
                         </tr>
                     </thead>
                     <tbody>

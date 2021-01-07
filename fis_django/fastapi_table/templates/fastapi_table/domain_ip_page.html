@@ -15,14 +15,19 @@
             {% include "fastapi_table/form_tabs.html" %}
             <br>
             {% if json %}
+                <p>Hover mouse over header fields to see descriptions</p>
                 <h4 class="table-header">domain_ip table values</h4>
                 <div class="table_container">
                     <table>
                         <thead>
                             <tr>
-                                {% for key in json.keys %}
-                                    <th>{{key}}</th>
-                                {% endfor %}
+                                <th title="The domain name or ip address">object_id</th>
+                                <th title="Whether the object_id is a domain or ip address">object_type</th>
+                                <th title="When these values were last updated in VirusTotal's records">object_last_updated</th>
+                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">score</th>
+                                <th title="Danger level of the object. Based on score value">severity</th>
+                                <th title="No. of communicating files associated with the object_id">comm_count</th>
+                                <th title="No. of referrer files associated with the object id">ref_count</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,13 +47,13 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>ref_file_id</th>
-                                <th>ref_file_name</th>
-                                <th>related_object_id</th>
-                                <th>date_scanned</th>
-                                <th>detection_score</th>
-                                <th>severity</th>
-                                <th>ref_file_type</th>
+                                <th title="SHA256 hash of the referrer file">ref_file_id</th>
+                                <th title="Given name of the referrer file">ref_file_name</th>
+                                <th title="ID of the object this referrer file is related to">related_object_id</th>
+                                <th title="Date of when VirusTotal scanned this referrer file">date_scanned</th>
+                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">detection_score</th>
+                                <th title="Danger level of the object. Based on score value">severity</th>
+                                <th title="Type of file">ref_file_type</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,13 +82,13 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>comm_file_id</th>
-                                <th>comm_file_name</th>
-                                <th>related_object_id</th>
-                                <th>date_scanned</th>
-                                <th>detection_score</th>
-                                <th>severity</th>
-                                <th>comm_file_type</th>
+                                <th title="SHA256 hash of the communicating file">comm_file_id</th>
+                                <th title="Given name of the communicating file">comm_file_name</th>
+                                <th title="ID of the object this communicating file is related to">related_object_id</th>
+                                <th title="Date of when VirusTotal scanned this referrer file">date_scanned</th>
+                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">detection_score</th>
+                                <th title="Danger level of the object. Based on score value">severity</th>
+                                <th title="Type of file">comm_file_type</th>
                             </tr>
                         </thead>
                         <tbody>

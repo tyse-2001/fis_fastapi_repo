@@ -13,18 +13,19 @@
             </div>
             {% include "fastapi_table/form_tabs.html" %}
             <br>
+            <p>Hover mouse over header fields to see descriptions</p>
             <h4 class="table-header">Domains/Ip search history:</h4>
             <div class="table_container">
                 <table>
                     <thead>
                         <tr>
-                            <th>object_id</th>
-                            <th>object_type</th>
-                            <th>object_last_updated</th>
-                            <th>score</th>
-                            <th>severity</th>
-                            <th>comm_count</th>
-                            <th>ref_count</th>
+                            <th title="The domain name or ip address">object_id</th>
+                            <th title="Whether the object_id is a domain or ip address">object_type</th>
+                            <th title="When these values were last updated in VirusTotal's records">object_last_updated</th>
+                            <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">score</th>
+                            <th title="Danger level of the object. Based on score value">severity</th>
+                            <th title="No. of communicating files associated with the object_id">comm_count</th>
+                            <th title="No. of referrer files associated with the object id">ref_count</th>
                         </tr>
                     </thead>
                     <tbody>
