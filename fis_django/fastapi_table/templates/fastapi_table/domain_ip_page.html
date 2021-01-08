@@ -21,13 +21,27 @@
                     <table>
                         <thead>
                             <tr>
-                                <th title="The domain name or ip address">object_id</th>
-                                <th title="Whether the object_id is a domain or ip address">object_type</th>
-                                <th title="When these values were last updated in VirusTotal's records">object_last_updated</th>
-                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">score</th>
-                                <th title="Danger level of the object. Based on score value">severity</th>
-                                <th title="No. of communicating files associated with the object_id">comm_count</th>
-                                <th title="No. of referrer files associated with the object id">ref_count</th>
+                                <th class="CellWithComment">object_id
+                                <span class="CellComment">The domain name or ip address</span>
+                            </th>
+                            <th class="CellWithComment">object_type
+                                <span class="CellComment">Whether the object_id is a domain or ip address</span>
+                            </th>
+                            <th class="CellWithComment">object_last_updated
+                                <span class="CellComment">When these values were last updated in VirusTotal's records</span>
+                            </th>
+                            <th class="CellWithComment">score
+                                <span class="CellComment">No. of VT antiviruses that deemed object suspicious</span>
+                            </th>
+                            <th class="CellWithComment">severity
+                                <span class="CellComment">Danger level of the object. Based on score.</span>
+                            </th>
+                            <th class="CellWithComment">comm_count
+                                <span class="CellComment">No. of communicating files associated with the object_id</span>
+                            </th>
+                            <th class="CellWithComment">ref_count
+                                <span class="CellComment">No. of referrer files associated with the object id</span>
+                            </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,21 +53,33 @@
                         </tbody>
                     </table>
                 </div>
-                <br>
-                <br>
                 {% if ref_files %}
                 <h4 class="table-header">referrer_files table values</h4>
                 <div class="table_container">
                     <table>
                         <thead>
                             <tr>
-                                <th title="SHA256 hash of the referrer file">ref_file_id</th>
-                                <th title="Given name of the referrer file">ref_file_name</th>
-                                <th title="ID of the object this referrer file is related to">related_object_id</th>
-                                <th title="Date of when VirusTotal scanned this referrer file">date_scanned</th>
-                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">detection_score</th>
-                                <th title="Danger level of the object. Based on score value">severity</th>
-                                <th title="Type of file">ref_file_type</th>
+                                <th class="CellWithComment">ref_file_id
+                                    <span class="CellComment">SHA256 hash of the referrer file</span>
+                                </th>
+                                <th class="CellWithComment">ref_file_name
+                                    <span class="CellComment">Given name of the referrer file</span>
+                                </th>
+                                <th class="CellWithComment">related_object_id
+                                    <span class="CellComment">ID of the object this referrer file is related to</span>
+                                </th>
+                                <th class="CellWithComment">date_scanned
+                                    <span class="CellComment">Date of when VirusTotal scanned this referrer file</span>
+                                </th>
+                                <th class="CellWithComment">detection_score
+                                    <span class="CellComment">No. of VT antiviruses that deemed object suspicious</span>
+                                </th>
+                                <th class="CellWithComment">severity
+                                    <span class="CellComment">Danger level of object</span>
+                                </th>
+                                <th class="CellWithComment">ref_file_type
+                                    <span class="CellComment">Type of file</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,21 +100,33 @@
                     </table>
                 </div>
                 {% endif %}
-                <br>
-                <br>
                 {% if comm_files %}
                 <h4 class="table-header">communicating_files table values</h4>
                 <div class="table_container">
                     <table>
                         <thead>
                             <tr>
-                                <th title="SHA256 hash of the communicating file">comm_file_id</th>
-                                <th title="Given name of the communicating file">comm_file_name</th>
-                                <th title="ID of the object this communicating file is related to">related_object_id</th>
-                                <th title="Date of when VirusTotal scanned this referrer file">date_scanned</th>
-                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">detection_score</th>
-                                <th title="Danger level of the object. Based on score value">severity</th>
-                                <th title="Type of file">comm_file_type</th>
+                                <th class="CellWithComment">comm_file_id
+                                    <span class="CellComment">SHA256 hash of the communicating file</span>
+                                </th>
+                                <th class="CellWithComment">comm_file_name
+                                    <span class="CellComment">Given name of the communicating file</span>
+                                </th>
+                                <th class="CellWithComment">related_object_id
+                                    <span class="CellComment">ID of the object this communicating file is related to</span>
+                                </th>
+                                <th class="CellWithComment">date_scanned
+                                    <span class="CellComment">Date of when VirusTotal scanned this communicating file</span>
+                                </th>
+                                <th class="CellWithComment">detection_score
+                                    <span class="CellComment">No. of VT antiviruses that deemed object suspicious</span>
+                                </th>
+                                <th class="CellWithComment">severity
+                                    <span class="CellComment">Danger level of the object</span>
+                                </th>
+                                <th class="CellWithComment">comm_file_type
+                                    <span class="CellComment">Type of file</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>

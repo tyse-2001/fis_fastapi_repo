@@ -19,13 +19,27 @@
                 <table>
                     <thead>
                         <tr>
-                            <th title="The domain name or ip address">object_id</th>
-                            <th title="Whether the object_id is a domain or ip address">object_type</th>
-                            <th title="When these values were last updated in VirusTotal's records">object_last_updated</th>
-                            <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">score</th>
-                            <th title="Danger level of the object. Based on score value">severity</th>
-                            <th title="No. of communicating files associated with the object_id">comm_count</th>
-                            <th title="No. of referrer files associated with the object id">ref_count</th>
+                            <th class="CellWithComment">object_id
+                                <span class="CellComment">The domain name or ip address</span>
+                            </th>
+                            <th class="CellWithComment">object_type
+                                <span class="CellComment">Whether the object_id is a domain or ip address</span>
+                            </th>
+                            <th class="CellWithComment">object_last_updated
+                                <span class="CellComment">When these values were last updated in VirusTotal's records</span>
+                            </th>
+                            <th class="CellWithComment">score
+                                <span class="CellComment">No. of VT antiviruses that deemed object suspicious</span>
+                            </th>
+                            <th class="CellWithComment">severity
+                                <span class="CellComment">Danger level of object</span>
+                            </th>
+                            <th class="CellWithComment">comm_count
+                                <span class="CellComment">No. of communicating files associated with the object_id</span>
+                            </th>
+                            <th class="CellWithComment">ref_count
+                                <span class="CellComment">No. of referrer files associated with the object id</span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>

@@ -16,6 +16,7 @@ table, th, td {
 .table_container {
   height: auto;
   max-height: 500px;
+  min-height: 120px;
   overflow-x: auto;
 }
 .table_container thead th {
@@ -91,6 +92,41 @@ td {
   .header-admin{
     float: none;
   }
+}
+
+.CellWithComment{
+  position:relative;
+}
+.CellComment{
+  display:none;
+  position:absolute; 
+  z-index:1;
+  border:1px;
+  background-color:dodgerblue;
+  border-style:solid;
+  border-width:1px;
+  border-color:dodgerblue;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 12px;
+  padding:8px;
+  color:white;
+  top:30px; 
+  left:0px;
+}
+.CellComment::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%;  /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent dodgerblue transparent;
+}
+
+.CellWithComment:hover span.CellComment{
+  display:block;
 }
 
 

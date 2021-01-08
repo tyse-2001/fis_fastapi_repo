@@ -22,12 +22,26 @@
                 <table>
                     <thead>
                         <tr>
-                            <th title="The SHA256 hash of the file">file_id</th>
-                            <th title="Given name of the file">file_name</th>
-                            <th title="Date of when VirusTotal scanned this file">file_date_scanned</th>
-                            <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">score</th>
-                            <th title="Danger level of the object. Based on score value">severity</th>
-                            <th title="No. of execution parents associated with the file">exec_parent_count</th>
+                            <tr>
+                                <th class="CellWithComment">file_id
+                                    <span class="CellComment">The SHA256 hash of the file</span>
+                                </th>
+                                <th class="CellWithComment">file_name
+                                    <span class="CellComment">Given name of the file</span>
+                                </th>
+                                <th class="CellWithComment">file_date_scanned
+                                    <span class="CellComment">Date of when VirusTotal scanned this file</span>
+                                </th>
+                                <th class="CellWithComment">score
+                                    <span class="CellComment">No. of VT antiviruses that deemed object suspicious</span>
+                                </th>
+                                <th class="CellWithComment">severity
+                                    <span class="CellComment">Danger level of object</span>
+                                </th>
+                                <th class="CellWithComment">exec_parent_count
+                                    <span class="CellComment">No. of execution parents associated with the file</span>
+                                </th>
+                            </tr>
                         </tr>
                     </thead>
                     <tbody>

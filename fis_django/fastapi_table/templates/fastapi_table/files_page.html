@@ -24,12 +24,24 @@
                     <table>
                         <thead>
                             <tr>
-                                <th title="The SHA256 hash of the file">file_id</th>
-                                <th title="Given name of the file">file_name</th>
-                                <th title="Date of when VirusTotal scanned this file">file_date_scanned</th>
-                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">score</th>
-                                <th title="Danger level of the object. Based on score value">severity</th>
-                                <th title="No. of execution parents associated with the file">exec_parent_count</th>
+                                <th class="CellWithComment">file_id
+                                    <span class="CellComment">The SHA256 hash of the file</span>
+                                </th>
+                                <th class="CellWithComment">file_name
+                                    <span class="CellComment">Given name of the file</span>
+                                </th>
+                                <th class="CellWithComment">file_date_scanned
+                                    <span class="CellComment">Date of when VirusTotal scanned this file</span>
+                                </th>
+                                <th class="CellWithComment">score
+                                    <span class="CellComment">No. of VT antiviruses that deemed object suspicious</span>
+                                </th>
+                                <th class="CellWithComment">severity
+                                    <span class="CellComment">Danger level of object</span>
+                                </th>
+                                <th class="CellWithComment">exec_parent_count
+                                    <span class="CellComment">No. of execution parents associated with the file</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,20 +55,30 @@
                         </tbody>
                     </table>
                 </div>
-                <br>
-                <br>
                 {% if exec_parent %}
                 <h4 class="table-header">execution_parents table values</h4>
                 <div class="table_container">
                     <table>
                         <thead>
                             <tr>
-                                <th title="The SHA256 hash of the execution parent">parent_id</th>
-                                <th title="SHA256 hash of the file this execution parent file is related to">related_file_id</th>
-                                <th title="Date of when VirusTotal scanned this file">exec_date_scanned</th>
-                                <th title="Total number of partnered VirusTotal AntiViruses that found the object suspicious">detection_score</th>
-                                <th title="Danger level of the object. Based on score value">severity</th>
-                                <th title="Type of file">parent_type</th>
+                                <th class="CellWithComment">parent_id
+                                    <span class="CellComment">The SHA256 hash of the execution parent</span>
+                                </th>
+                                <th class="CellWithComment">related_file_id
+                                    <span class="CellComment">SHA256 hash of the file this execution parent file is related to</span>
+                                </th>
+                                <th class="CellWithComment">exec_date_scanned
+                                    <span class="CellComment">Date of when VirusTotal scanned this file</span>
+                                </th>
+                                <th class="CellWithComment">detection_score
+                                    <span class="CellComment">No. of VT antiviruses that deemed object suspicious</span>
+                                </th>
+                                <th class="CellWithComment">severity
+                                    <span class="CellComment">Danger level of object</span>
+                                </th>
+                                <th class="CellWithComment">parent_type
+                                    <span class="CellComment">Type of file</span>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
