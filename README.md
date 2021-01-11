@@ -18,9 +18,14 @@ Repository for FastApi code
 - Implement logic to stop update of database if there is already a relevant entry
 - Implement scrolling to the table body only, with header in place
 
-## In-progress tasks:
+## On hold:
 - Using sqlmap to scan web application to check for vulnerabilities about sql injection.
-- (New) Improve the overall look of the site
+
+## In-progress tasks:
+- Improve the overall look of the site
+  - Decreasing the load time of site
+  - Add in object type filter into admin page
+  - Add in admin actions
 
 
 ## Other notes:
