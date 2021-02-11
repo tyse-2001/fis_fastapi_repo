@@ -31,3 +31,5 @@ Repository for FastApi code
 ## Other notes:
 - Uvicorn server running on port 8000
 - Django development server running on port 8080
+- postgresqlmanager: pgadmin
+- uvicorn server command used: uvicorn main:app --reload
